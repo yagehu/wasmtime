@@ -846,7 +846,11 @@ pub unsafe extern "C" fn fd_filestat_set_times(
                 fst_flags & FSTFLAGS_MTIM_NOW == FSTFLAGS_MTIM_NOW,
             )?;
             let ds = state.descriptors();
-            let file = ds.get_file(fd)?;
+            let file = match ds.get(fd)? {
+                | Descriptor::Streams(Streams { type_: StreamType::File(f), .. }) => f,
+                | _ => return Err(ERRNO_BADF),
+            };
+
             file.fd.set_times(atim, mtim)?;
             Ok(())
         })

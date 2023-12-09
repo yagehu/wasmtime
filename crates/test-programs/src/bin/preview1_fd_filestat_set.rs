@@ -40,6 +40,14 @@ unsafe fn test_fd_filestat_set(dir_fd: wasi::Fd) {
     )
     .expect("fd_filestat_set_times");
 
+    wasi::fd_filestat_set_times(
+        dir_fd,
+        new_mtim.as_nanos() as u64,
+        new_mtim.as_nanos() as u64,
+        wasi::FSTFLAGS_MTIM,
+    )
+    .expect("fd_filestat_set_times on dirfd");
+
     let stat = wasi::fd_filestat_get(file_fd).expect("failed filestat 3");
     assert_eq!(stat.size, 100, "file size should remain unchanged at 100");
 
