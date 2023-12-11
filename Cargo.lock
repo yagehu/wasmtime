@@ -261,8 +261,19 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b779b2d0a001c125b4584ad586268fb4b92d957bff8d26d7fe0dd78283faa814"
 dependencies = [
- "cap-primitives",
- "cap-std",
+ "cap-primitives 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "cap-std 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "io-lifetimes",
+ "windows-sys",
+]
+
+[[package]]
+name = "cap-fs-ext"
+version = "2.0.0"
+source = "git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path#5f0a9dac61f4a8b2f9a2057d4a497ea2b9cdfc88"
+dependencies = [
+ "cap-primitives 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "io-lifetimes",
  "windows-sys",
 ]
@@ -270,11 +281,10 @@ dependencies = [
 [[package]]
 name = "cap-net-ext"
 version = "2.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ffc30dee200c20b4dcb80572226f42658e1d9c4b668656d7cc59c33d50e396e"
+source = "git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path#5f0a9dac61f4a8b2f9a2057d4a497ea2b9cdfc88"
 dependencies = [
- "cap-primitives",
- "cap-std",
+ "cap-primitives 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "rustix",
  "smallvec",
 ]
@@ -284,6 +294,22 @@ name = "cap-primitives"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2bf30c373a3bee22c292b1b6a7a26736a38376840f1af3d2d806455edf8c3899"
+dependencies = [
+ "ambient-authority",
+ "fs-set-times",
+ "io-extras",
+ "io-lifetimes",
+ "ipnet",
+ "maybe-owned",
+ "rustix",
+ "windows-sys",
+ "winx",
+]
+
+[[package]]
+name = "cap-primitives"
+version = "2.0.0"
+source = "git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path#5f0a9dac61f4a8b2f9a2057d4a497ea2b9cdfc88"
 dependencies = [
  "ambient-authority",
  "fs-set-times",
@@ -312,7 +338,18 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "84bade423fa6403efeebeafe568fdb230e8c590a275fba2ba978dd112efcf6e9"
 dependencies = [
- "cap-primitives",
+ "cap-primitives 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "io-extras",
+ "io-lifetimes",
+ "rustix",
+]
+
+[[package]]
+name = "cap-std"
+version = "2.0.0"
+source = "git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path#5f0a9dac61f4a8b2f9a2057d4a497ea2b9cdfc88"
+dependencies = [
+ "cap-primitives 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "io-extras",
  "io-lifetimes",
  "rustix",
@@ -324,7 +361,7 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7b9e3348a3510c4619b4c7a7bcdef09a71221da18f266bda3ed6b9aea2c509e2"
 dependencies = [
- "cap-std",
+ "cap-std 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand",
  "rustix",
  "uuid",
@@ -333,10 +370,9 @@ dependencies = [
 [[package]]
 name = "cap-time-ext"
 version = "2.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8f52b3c8f4abfe3252fd0a071f3004aaa3b18936ec97bdbd8763ce03aff6247"
+source = "git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path#5f0a9dac61f4a8b2f9a2057d4a497ea2b9cdfc88"
 dependencies = [
- "cap-primitives",
+ "cap-primitives 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "once_cell",
  "rustix",
  "winx",
@@ -2527,12 +2563,11 @@ dependencies = [
 [[package]]
 name = "system-interface"
 version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "27ce32341b2c0b70c144bbf35627fdc1ef18c76ced5e5e7b3ee8b5ba6b2ab6a0"
+source = "git+ssh://git@github.com/yagehu/system-interface?branch=yagehu/cap-std-o-path#99111e1c234b9c28f818ab602c92e795fa822160"
 dependencies = [
  "bitflags 2.4.1",
- "cap-fs-ext",
- "cap-std",
+ "cap-fs-ext 2.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "fd-lock",
  "io-lifetimes",
  "rustix",
@@ -2949,9 +2984,9 @@ version = "17.0.0"
 dependencies = [
  "anyhow",
  "async-trait",
- "cap-fs-ext",
+ "cap-fs-ext 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "cap-rand",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "cap-time-ext",
  "fs-set-times",
  "io-extras",
@@ -2972,7 +3007,7 @@ dependencies = [
  "anyhow",
  "bitflags 2.4.1",
  "cap-rand",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "io-extras",
  "log",
  "rustix",
@@ -3005,7 +3040,7 @@ name = "wasi-tokio"
 version = "17.0.0"
 dependencies = [
  "anyhow",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "cap-tempfile",
  "io-extras",
  "io-lifetimes",
@@ -3242,7 +3277,7 @@ name = "wasmtime-bench-api"
 version = "17.0.0"
 dependencies = [
  "anyhow",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "clap",
  "shuffling-allocator",
  "target-lexicon",
@@ -3266,7 +3301,7 @@ name = "wasmtime-c-api-impl"
 version = "17.0.0"
 dependencies = [
  "anyhow",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "env_logger 0.10.0",
  "futures",
  "log",
@@ -3659,10 +3694,10 @@ dependencies = [
  "async-trait",
  "bitflags 2.4.1",
  "bytes",
- "cap-fs-ext",
+ "cap-fs-ext 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "cap-net-ext",
  "cap-rand",
- "cap-std",
+ "cap-std 2.0.0 (git+ssh://git@github.com/yagehu/cap-std?branch=yagehu/o-path)",
  "cap-time-ext",
  "fs-set-times",
  "futures",
