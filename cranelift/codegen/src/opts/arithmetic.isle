@@ -586,14 +586,27 @@
 (rule (simplify (umax ty (umin ty x y) (umax ty y x))) (umax ty x y))
 
 ;; x > max(x, y) --> 0
-(rule (simplify (sgt ty x (smax ty x y))) (all_zero ty))
-(rule (simplify (sgt ty x (smax ty y x))) (all_zero ty))
-(rule (simplify (slt ty (smax ty x y) x)) (all_zero ty))
-(rule (simplify (slt ty (smax ty y x) x)) (all_zero ty))
-(rule (simplify (ugt ty x (umax ty x y))) (all_zero ty))
-(rule (simplify (ugt ty x (umax ty y x))) (all_zero ty))
-(rule (simplify (ult ty (umax ty x y) x)) (all_zero ty))
-(rule (simplify (ult ty (umax ty y x) x)) (all_zero ty))
+;;
+;; TODO: the type of a matched comparison is its result type (`i8`), not the
+;; type of the compared operands, so these rules only apply to `i8` operands.
+;; The verifier rejects them: its specs do not relate the comparison's `ty` to
+;; its result width.
+(rule sgt_x_smax_xy (simplify (sgt ty x (smax ty x y))) (all_zero ty))
+(rule sgt_x_smax_yx (simplify (sgt ty x (smax ty y x))) (all_zero ty))
+(rule slt_smax_xy_x (simplify (slt ty (smax ty x y) x)) (all_zero ty))
+(rule slt_smax_yx_x (simplify (slt ty (smax ty y x) x)) (all_zero ty))
+(rule ugt_x_umax_xy (simplify (ugt ty x (umax ty x y))) (all_zero ty))
+(rule ugt_x_umax_yx (simplify (ugt ty x (umax ty y x))) (all_zero ty))
+(rule ult_umax_xy_x (simplify (ult ty (umax ty x y) x)) (all_zero ty))
+(rule ult_umax_yx_x (simplify (ult ty (umax ty y x) x)) (all_zero ty))
+(attr rule sgt_x_smax_xy (tag TODO))
+(attr rule sgt_x_smax_yx (tag TODO))
+(attr rule slt_smax_xy_x (tag TODO))
+(attr rule slt_smax_yx_x (tag TODO))
+(attr rule ugt_x_umax_xy (tag TODO))
+(attr rule ugt_x_umax_yx (tag TODO))
+(attr rule ult_umax_xy_x (tag TODO))
+(attr rule ult_umax_yx_x (tag TODO))
 
 ;; (-X) * C = X * (-C)
 (rule imul_ineg_const (simplify (imul (fits_in_64 ty) (ineg ty x) (iconst ty y))) (imul ty x (iconst ty (imm64_neg ty y))))
